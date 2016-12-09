@@ -32,3 +32,13 @@ int main()
   playComp();
   return 0;
 }
+
+
+
+  /*
+  // random time machinations
+  time_t seconds = time (NULL); // get current time
+  cout << "seconds since January 1, 1970:  " << seconds << endl;
+  seconds = seconds % 100;
+  cout << seconds;
+  */
