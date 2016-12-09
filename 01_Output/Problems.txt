@@ -1,0 +1,35 @@
+Adopted from https://www3.ntu.edu.sg/home/ehchua/programming/cpp/cp1_Basics.html
+
+Exercises
+
+    Print these patterns using nested loop (in a program called PrintPattern1x). Use a variable called size for the size of the pattern and try out various sizes. You should use as few printing statements as possible.
+
+     # * # * # * # *    # # # # # # # #    # # # # # # # #    1                                1
+    # * # * # * # *     # # # # # # #        # # # # # # #    2 1                            1 2
+     # * # * # * # *    # # # # # #            # # # # # #    3 2 1                        1 2 3
+    # * # * # * # *     # # # # #                # # # # #    4 3 2 1                    1 2 3 4
+     # * # * # * # *    # # # #                    # # # #    5 4 3 2 1                1 2 3 4 5
+    # * # * # * # *     # # #                        # # #    6 5 4 3 2 1            1 2 3 4 5 6
+     # * # * # * # *    # #                            # #    7 6 5 4 3 2 1        1 2 3 4 5 6 7
+    # * # * # * # *     #                                #    8 7 6 5 4 3 2 1    1 2 3 4 5 6 7 8
+         (a)                  (b)                (c)                (d)                (e)
+
+    Hints:
+    The equations for major and opposite diagonals are row = col and row + col = size + 1. Decide on what to print above and below the diagonal.
+    Print the timetable of 1 to 9, as follows, using nested loop. (Hints: you need to use an if-else statement to check whether the product is single-digit or double-digit, and print an additional space if needed.)
+
+     1  2  3  4  5  6  7  8  9
+     2  4  6  8 10 12 14 16 18
+     ...... 
+
+    Print these patterns using nested loop.
+
+    # # # # # # #      # # # # # # #      # # # # # # #      # # # # # # #      # # # # # # #
+    #           #        #                          #          #       #        # #       # #
+    #           #          #                      #              #   #          #   #   #   #
+    #           #            #                  #                  #            #     #     #
+    #           #              #              #                  #   #          #   #   #   #
+    #           #                #          #                  #       #        # #       # #
+    # # # # # # #      # # # # # # #      # # # # # # #      # # # # # # #      # # # # # # #
+         (a)                 (b)               (c)                (d)                (e)
+
