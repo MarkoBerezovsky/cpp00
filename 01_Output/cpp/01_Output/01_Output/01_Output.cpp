@@ -13,8 +13,9 @@ int main()
 	//create square
 	
 
-	//square(a,a);
-	//shape_x(a);
+	square(a,a);
+	shape_x(a);
+	std::cout << std::endl;
 	shape_x_square(a);
 
 	system("Pause");
