@@ -53,15 +53,41 @@ void printTwoAtPos(int pos, int len) {
 	std::cout << std::endl;
 }
 
+
+
+void printFourAtPos(int pos, int len) {
+	for (int c = 0; c < len; c++) {
+		if (c==0 || c == pos - 1 || c == len - pos || c==len-1) {
+			std::cout << "#";
+		}
+		else {
+			std::cout << " ";
+		}
+	}
+	std::cout << std::endl;
+}
+
 void printDiag(int size) {
 	for(int row = 2;row<size;row++)
 			printTwoAtPos(row, size);    
+}
+
+void printDiag2(int size) {
+	for (int row = 2; row<size; row++)
+		printFourAtPos(row, size);
 }
 
 void shape_x(int size) {
 	printTopBottom(size);
 	std::cout << std::endl;
 	printDiag(size);
+	printTopBottom(size);
+}
+void shape_x_square(int size)
+{
+	printTopBottom(size);
+	std::cout << std::endl;
+	printDiag2(size);
 	printTopBottom(size);
 }
 /*

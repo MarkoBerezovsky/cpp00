@@ -14,8 +14,8 @@ int main()
 	
 
 	//square(a,a);
-	shape_x(a);
-
+	//shape_x(a);
+	shape_x_square(a);
 
 	system("Pause");
 	return 0;
