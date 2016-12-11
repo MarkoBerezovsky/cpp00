@@ -1,0 +1,3 @@
+type,date,time,cleared
+L,25.11.2016,1,yes
+L,9.12.2016,1.5,yes
