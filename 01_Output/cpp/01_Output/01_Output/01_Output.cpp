@@ -1,11 +1,20 @@
-// 01_Output.cpp : Defines the entry point for the console application.
-//
-
-#include "stdafx.h"
+#include <iostream>;
+//#include <string>;
+//#include "printText.h";
+#include "square.h";
 
 
 int main()
 {
-    return 0;
+	//string mystring = "xyz";
+	//printText(mystring);
+
+
+	//create square
+	square(int (5), int (5));
+
+
+	system("Pause");
+	return 0;
 }
 
