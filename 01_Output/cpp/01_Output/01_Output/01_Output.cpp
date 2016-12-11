@@ -9,9 +9,12 @@ int main()
 	//string mystring = "xyz";
 	//printText(mystring);
 
-
+	int a = 7;
 	//create square
-	square(int (5), int (5));
+	
+
+	//square(a,a);
+	shape_x(a);
 
 
 	system("Pause");
