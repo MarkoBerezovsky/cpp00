@@ -1,4 +1,5 @@
 function [  ] = empty_rect(a,b)
+%text on dev branch
 for row = 1:a % print every row a certain column
     for column = 1: b
         if row == 1||row==a % check for first and last row
