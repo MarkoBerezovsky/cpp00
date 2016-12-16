@@ -1,0 +1,15 @@
+1. ----------------------------------------------------------------------
+Find the mean and the standard deviation of  integers stored in a file,
+
+Formulas:
+https://en.wikipedia.org/wiki/Standard_deviation
+
+
+2. ----------------------------------------------------------------------
+
+Fit a line to the data in the file by the least squares method.
+
+Least squares formulas:
+http://www.efunda.com/math/leastsquares/lstsqr1dcurve.cfm
+http://www.varsitytutors.com/hotmath/hotmath_help/topics/line-of-best-fit
+
