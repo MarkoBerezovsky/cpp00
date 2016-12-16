@@ -187,3 +187,4 @@ int main() {
   histogram(x, 5, 21, 'x');
 
 }
+
