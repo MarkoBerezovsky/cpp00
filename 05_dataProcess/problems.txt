@@ -1,0 +1,17 @@
+
+
+European temperature data files can be downloaded from 
+http://eca.knmi.nl/countries/country_info.php?coun_id=cz
+The data are in  the text format and  relatively easy to manipulate.
+
+Write a program which finds in the temperature data from Prague Klementinum (years 1775-2005) :
+
+A. The hottest day.
+B. The hottest week. Suppose that any 7 consecutive days form a week.
+C. The hottest month.
+D. The hottest year.
+E. The hottest decade. Suppose that any 10 consecutive years form a decade.
+
+
+A week, mont etc, is hotter than another week, month, etc, if the average temperature of the first one is 
+higher than the average temperature of the second one.
