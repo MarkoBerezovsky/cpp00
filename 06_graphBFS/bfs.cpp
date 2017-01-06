@@ -6,6 +6,8 @@
 
 
 /*
+
+
 Example methods presented here are based on BFS.
 All methods work in O(|E|) time,
 however, they are a mere concept illustration
@@ -18,6 +20,7 @@ using namespace std;
 // Graph representation
 int N, M;
 vector<vector<int> > edge;
+
 
 
 void readGr(){
