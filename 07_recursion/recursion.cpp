@@ -16,6 +16,43 @@ int maxValue( std::vector<int> & v , int from, int to ) {
   return max( v[from], maxValue(v, from+1, to) );
 }
 
+// divide in the middle:
+int maxValue( std::vector<int> & v , int from, int to ) {
+  if( from+1 == to ) return v[from];
+  int lmax = maxValue( v. from, (from+to)/2 );
+  int rmax = maxValue( v. (from+to)/2, to );
+  return max( lmax, rmax );
+}
+
+// divide in the middle shorter
+int maxValue( std::vector<int> & v , int from, int to ) {
+  if( from+1 == to ) return v[from];
+  return max( maxValue( v. from, (from+to)/2 ), maxValue( v. (from+to)/2, to ));
+}
+
+
+// ------------------------------------------------------------------------------
+//                             Is non-decrasing? y
+// ------------------------------------------------------------------------------
+
+bool isNonDecreasing( std::vector<int> & v , int from, int to ) {
+  if( from+1 >= to ) return true;
+  return(    v[from] <= v[from+1]
+          && isNonDecreasing(v, from+1, to);
+}
+
+
+// divide in the middle, carefully!:
+bool isNonDecreasing( std::vector<int> & v , int from, int to ) {
+  if( from+1 >= to ) return true;
+  imt mid = (from+to)/2 + 1; 
+  return (    isNonDecreasing( v. from, mid ) 
+           && isNonDecreasing( v. mid, to )
+           &&  v[mid-1] <= v[mid] )
+          )
+}
+
+
 // ------------------------------------------------------------------------------
 //                             Insert Sort recursively
 // ------------------------------------------------------------------------------
