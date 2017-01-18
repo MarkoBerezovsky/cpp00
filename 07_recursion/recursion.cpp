@@ -11,45 +11,45 @@ using namespace std;
 //                             Max of array recursively
 // ------------------------------------------------------------------------------
 
-int maxValue( std::vector<int> & v , int from, int to ) {
+int maxValue1( std::vector<int> & v, int from, int to ) {
   if( from+1 == to ) return v[from];
-  return max( v[from], maxValue(v, from+1, to) );
+  return max( v[from], maxValue1(v, from+1, to) );
 }
 
 // divide in the middle:
-int maxValue( std::vector<int> & v , int from, int to ) {
+int maxValue2( std::vector<int> & v, int from, int to ) {
   if( from+1 == to ) return v[from];
-  int lmax = maxValue( v. from, (from+to)/2 );
-  int rmax = maxValue( v. (from+to)/2, to );
+  int lmax = maxValue2( v, from, (from+to)/2 );
+  int rmax = maxValue2( v, (from+to)/2, to );
   return max( lmax, rmax );
 }
 
 // divide in the middle shorter
-int maxValue( std::vector<int> & v , int from, int to ) {
+int maxValue3( std::vector<int> & v, int from, int to ) {
   if( from+1 == to ) return v[from];
-  return max( maxValue( v. from, (from+to)/2 ), maxValue( v. (from+to)/2, to ));
+  return max( maxValue3( v, from, (from+to)/2 ), maxValue3( v, (from+to)/2, to ));
 }
 
 
 // ------------------------------------------------------------------------------
-//                             Is non-decrasing? y
+//                             Is non-decrasing?
 // ------------------------------------------------------------------------------
 
-bool isNonDecreasing( std::vector<int> & v , int from, int to ) {
+bool isNonDecreasing1( std::vector<int> & v, int from, int to ) {
   if( from+1 >= to ) return true;
-  return(    v[from] <= v[from+1]
-          && isNonDecreasing(v, from+1, to);
+  return      v[from] <= v[from+1]
+          && isNonDecreasing1(v, from+1, to);
 }
 
 
 // divide in the middle, carefully!:
-bool isNonDecreasing( std::vector<int> & v , int from, int to ) {
+bool isNonDecreasing2( std::vector<int> & v, int from, int to ) {
   if( from+1 >= to ) return true;
-  imt mid = (from+to)/2 + 1; 
-  return (    isNonDecreasing( v. from, mid ) 
-           && isNonDecreasing( v. mid, to )
-           &&  v[mid-1] <= v[mid] )
-          )
+  int mid = (from+to-1)/2 +1;  // mid is first in the right half
+  return      isNonDecreasing2( v, from, mid)
+           && isNonDecreasing2( v, mid, to )
+           &&  v[mid-1] <= v[mid] ;
+
 }
 
 
@@ -107,10 +107,10 @@ void ruler( int n ){
 }
 
 // ------------------------------------------------------------------------------
-//          Fractal  generator
+//          2D Fractal  generators
 // ------------------------------------------------------------------------------
 
-void fillSquare( vector<vector<char> > & board,  int x, int y, int sqsize, char c){
+void fillSquare1( vector<vector<char> > & board,  int x, int y, int sqsize, char c){
   if( x < 0 || y < 0 || y >= board.size() || x >= board[y].size() ) return;
 
   if( sqsize <= 1 ) {
@@ -118,14 +118,29 @@ void fillSquare( vector<vector<char> > & board,  int x, int y, int sqsize, char 
     return;
   }
 
-  fillSquare( board, x,               y,              sqsize/3, c );
-  fillSquare( board, x + sqsize*2/3,  y,              sqsize/3, c );
-  fillSquare( board, x,               y + sqsize*2/3, sqsize/3, c );
-  fillSquare( board, x + sqsize*2/3,  y + sqsize*2/3, sqsize/3, c );
-
-  fillSquare( board, x + sqsize*1/3,  y + sqsize*1/3, sqsize/3, c );
-
+  fillSquare1( board, x,               y,              sqsize/3, c );
+  fillSquare1( board, x + sqsize*2/3,  y,              sqsize/3, c );
+  fillSquare1( board, x,               y + sqsize*2/3, sqsize/3, c );
+  fillSquare1( board, x + sqsize*2/3,  y + sqsize*2/3, sqsize/3, c );
+  fillSquare1( board, x + sqsize*1/3,  y + sqsize*1/3, sqsize/3, c );
 }
+
+
+void fillSquare2( vector<vector<char> > & board,  int x, int y, int sqsize, char c){
+  if( x < 0 || y < 0 || y >= board.size() || x >= board[y].size() ) return;
+
+  if( sqsize <= 1 ) {
+    board[y][x] = c;
+    return;
+  }
+
+  fillSquare2( board, x + sqsize*1/3,  y             , sqsize/3, c );
+  fillSquare2( board, x,               y + sqsize*1/3, sqsize/3, c );
+  fillSquare2( board, x + sqsize*2/3,  y + sqsize*1/3, sqsize/3, c );
+  fillSquare2( board, x + sqsize*1/3,  y + sqsize*2/3, sqsize/3, c );
+  fillSquare2( board, x + sqsize*1/3,  y + sqsize*1/3, sqsize/3, c );
+}
+
 
 // ------------------------------------------------------------------------------
 //           Auxiliary and service functions
@@ -159,8 +174,20 @@ void listVect( std::vector<int> & v ){
 int main(){
 
   std::vector<int> v { 11, 34, 23, 27, 31, 18 };
+  std::vector<int> w { 11, 14, 14, 20, 32 };
 
-  cout << maxValue( v, 0, v.size() ) << endl;
+
+  cout << "Check min values:" << endl;
+  cout << maxValue1( v, 0, v.size() ) << endl;
+  cout << maxValue2( v, 0, v.size() ) << endl;
+  cout << maxValue3( v, 0, v.size() ) << endl;
+
+  cout << "Check nonDecreasing:" << endl;
+  cout << isNonDecreasing1( v, 0, v.size() )  << endl;
+  cout << isNonDecreasing2( v, 0, v.size() )  << endl;
+  cout << isNonDecreasing1( w, 0, w.size() )  << endl;
+  cout << isNonDecreasing2( w, 0, w.size() )  << endl;
+
 
   listVect(v);
   InsertSort(v, 0);
@@ -174,7 +201,7 @@ int main(){
   cout << endl;
 
  vector<vector<char> > board = makeBoard(81);
- fillSquare(board, 0,0, 81, 'X');
+ fillSquare2(board, 0,0, 81, 'X');
  listBoard(board);
 
  return 0;
