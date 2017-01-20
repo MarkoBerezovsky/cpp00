@@ -16,7 +16,8 @@ struct node
 
 node * newnode( int aKey ) {
   node * n = new node;
-  n->left = n->right = NULL;
+  n->left = NULL;
+  n->right = NULL;
   n->key = aKey;
   return n;
 }
