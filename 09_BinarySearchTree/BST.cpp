@@ -102,7 +102,7 @@ void tree_print( node * currNode, int depth ){
   tree_print( currNode->left, depth+1 );
 
   // Note the order : first the right subtree, then the current node and finally
-  // the left subtree. The tree appears rotated to the left by 90 deg on the scree.
+  // the left subtree. The tree appears rotated to the left by 90 deg on the screen.
 }
 
 // ------------------------------------------------------------------------------
