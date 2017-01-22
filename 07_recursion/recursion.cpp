@@ -98,6 +98,9 @@ void upDown( int currVal, int n ) {
 //      1 2 1 3 1 2 1 4 1 2 1 3 1 2 1 5 1 2 1 3 1 2 1 4 1 2 1 3 1 2 1
 // ------------------------------------------------------------------------------
 
+// https://en.wikipedia.org/wiki/Thomae%27s_function#The_ruler_function
+// https://oeis.org/A001511
+
 void ruler( int n ){
   if( n == 0 ) return;
 
@@ -108,11 +111,12 @@ void ruler( int n ){
 
 
 // ------------------------------------------------------------------------------
-//                       Hanoi towers
+//                        Tower of Hanoi,  basic minimalistic variant
 // ------------------------------------------------------------------------------
 
+https://en.wikipedia.org/wiki/Tower_of_Hanoi
 
-// Note that the correct sequence of moves is printed
+// Note that the correct sequence of moves is printed 
 // **without** keeping any information about the disks on particular sticks
 
 void Hanoi( int fromStick, int toStick, int otherStick, int noOfDisks ){
@@ -124,7 +128,7 @@ void Hanoi( int fromStick, int toStick, int otherStick, int noOfDisks ){
 }
 
 // ------------------------------------------------------------------------------
-//                       Hanoi towers with pictures
+//                       Tower of Hanoi with pictures
 // ------------------------------------------------------------------------------
 
 /** Sticks & disks picture, can be improved endlessly ... */
@@ -211,7 +215,7 @@ void Hanoi_posh(int disksN) {
 void fillSquare1( vector<vector<char> > & board,  int x, int y, int sqsize, char c){
   if( x < 0 || y < 0 || y >= board.size() || x >= board[y].size() ) return;
 
-  if( sqsize <= 1 ) {
+  if( sqsize <= 1 ) { 
     board[y][x] = c;
     return;
   }
@@ -298,10 +302,15 @@ int main(){
   upDown(1, 12);
   cout << endl;
 
- vector<vector<char> > board = makeBoard(81);
- fillSquare2(board, 0,0, 81, 'X');
- listBoard(board);
+  vector<vector<char> > board = makeBoard(81);
+  fillSquare2(board, 0,0, 81, 'X');
+  listBoard(board);
 
+  Hanoi(1, 3, 2, 4 );
+ 
+  Hanoi_posh(4);
+  
+  
  return 0;
 }
 
