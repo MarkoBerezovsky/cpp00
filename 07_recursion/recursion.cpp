@@ -116,7 +116,7 @@ void ruler( int n ){
 //                        Tower of Hanoi,  basic minimalistic variant
 // ------------------------------------------------------------------------------
 
-https://en.wikipedia.org/wiki/Tower_of_Hanoi
+// https://en.wikipedia.org/wiki/Tower_of_Hanoi
 
 // Note that the correct sequence of moves is printed 
 // **without** keeping any information about the disks on particular sticks
