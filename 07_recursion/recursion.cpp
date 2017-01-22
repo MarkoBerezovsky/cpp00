@@ -106,6 +106,104 @@ void ruler( int n ){
   ruler(n-1);
 }
 
+
+// ------------------------------------------------------------------------------
+//                       Hanoi towers
+// ------------------------------------------------------------------------------
+
+
+// Note that the correct sequence of moves is printed
+// **without** keeping any information about the disks on particular sticks
+
+void Hanoi( int fromStick, int toStick, int otherStick, int noOfDisks ){
+  if( noOfDisks == 0 ) return;  // nothing to do, obviously
+
+  Hanoi( fromStick, otherStick, toStick, noOfDisks-1 );
+  cout << "transfer disk of size " <<  noOfDisks << " from stick " << fromStick << " to stick " << toStick << endl;
+  Hanoi( otherStick, toStick, fromStick, noOfDisks-1 );
+}
+
+// ------------------------------------------------------------------------------
+//                       Hanoi towers with pictures
+// ------------------------------------------------------------------------------
+
+/** Sticks & disks picture, can be improved endlessly ... */
+
+void Hanoi_posh_print( vector<vector<int>> & sticks, string aComment) { // supposes 3 sticks
+  
+  // currently, max disk size is not kepth anywhere nor it is passed as a parameter, so go and find it: 
+  int maxDisk = 0;
+  if( sticks[0].size() > 0 ) maxDisk = sticks[0][0];
+  if( sticks[1].size() > 0 ) maxDisk = max( maxDisk, sticks[1][0] );
+  if( sticks[2].size() > 0 ) maxDisk = max( maxDisk, sticks[2][0] );
+
+  int columnWidth = maxDisk*2+2+1;
+
+  cout << string( columnWidth*3, ' ') << endl;
+  char diskChar = '#';
+    for( int level = maxDisk; level >= 0; level-- ) {
+      for( int stick = 0; stick < 3; stick++ ) {
+        if( level >= sticks[stick].size() ){
+          cout << string( columnWidth/2, ' ');
+          cout << '|';
+          cout << string( columnWidth/2, ' ');
+        }
+        else {
+          int diskWidth = 2 * sticks[stick][level]+1;
+          cout << string( columnWidth/2 - diskWidth/2, ' ');
+          cout << string( diskWidth/2, diskChar) << sticks[stick][level] << string( diskWidth/2, diskChar);
+          cout << string( columnWidth/2 - diskWidth/2, ' ');
+        }
+      }
+      cout << endl;
+    }
+  cout << string( columnWidth*3, '-') << aComment << endl;
+}
+
+
+/** The recursive function which does the job. */
+
+void Hanoi_posh( vector<vector<int>> & sticksArr, int fromStick, int toStick, int otherStick, int pileSize){
+  if( pileSize == 0 ) return;  // nothing to transfer
+
+  // move a pile of disks recursively
+  Hanoi_posh( sticksArr, fromStick, otherStick, toStick, pileSize-1 );
+
+  // "physically" transfer the disk
+  int disk = sticksArr[fromStick][sticksArr[fromStick].size()-1];
+  sticksArr[fromStick].pop_back();
+  sticksArr[toStick].push_back(disk);
+
+  // display the disks configuration after the transfer
+  ostringstream comment;
+  comment << "  moved: " << fromStick+1 << " --> " << toStick+1 << ", disk: " <<  sticksArr[toStick][sticksArr[toStick].size()-1] << endl;
+  Hanoi_posh_print( sticksArr, comment.str() );
+ 
+  // move a pile of disks recursively
+  Hanoi_posh( sticksArr, otherStick, toStick, fromStick, pileSize-1 );
+}
+
+
+/** Wrapper function which initializes the stuff and runs the recursion. */
+
+void Hanoi_posh(int disksN) {
+  //vector of three vectors, each represents the disks on one stick
+  // the disks themselves are represented as integers according to their sizes: 1,2,3,...
+  vector<vector<int>> sticks (3, vector<int> (0) );
+
+  // fill first stick
+  for( int n = disksN; n > 0; n-- )
+    sticks[0].push_back(n);
+
+  // display initial state
+  Hanoi_posh_print( sticks, "  Start configuration. " );
+
+  // run recursion
+  Hanoi_posh( sticks, 0, 2, 1, sticks[0][0] );
+}
+
+
+
 // ------------------------------------------------------------------------------
 //          2D Fractal  generators
 // ------------------------------------------------------------------------------
