@@ -4,6 +4,8 @@ Some simple recursion demonstrations
 
 #include <iostream>
 #include <vector>
+#include <string>
+#include <sstream> // string stream
 
 using namespace std;
 
