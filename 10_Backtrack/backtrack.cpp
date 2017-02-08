@@ -98,7 +98,7 @@ void allPaths( int currNode, int endNode ) {
     for( int j = 0; j < edges[currNode].size() ; j++ ) {
       int neighbour = edges[currNode][j];
       if( used[neighbour] == false )
-        allPaths( edges[currNode][j], endNode );
+        allPaths( neighbour, endNode );
     }
 
   used[currNode] = false;
