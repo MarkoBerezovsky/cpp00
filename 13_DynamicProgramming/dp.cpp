@@ -75,12 +75,12 @@ void knapMulti( vector<int> & masses, vector<int> & prices, int capacity ) {
 
 // Knapsack problem with unique items of each type
 // Each object is either included in the knapsack or it is not included.
-// let optP( c, it ) be the optimal price of storing a subset of items from 1st to it-th
+// Let optP(c, it) be the optimal price of storing a subset of items from 1st to it-th
 // in the knapsack of capacity c. There are only two possibilities for the it-th item:
-// It can be only included or not included in the knapsack of capacity c.
+// It can be either included or not included in the knapsack of capacity c.
 // Therefore, the recurrence is
-// optP( c, it ) = max( optP(c-price[it], it-1 ), optP(c, it-1 )
-// with initial conditions: optP( 0, it ) = optP( c, 0 ) = 0, for any c, it.
+// optP(c, it) = max( optP(c-price[it], it-1), optP(c, it-1) )
+// with initial conditions: optP(0, it) = optP(c, 0) = 0, for any c, it.
 
 void knap01( vector<int> & masses, vector<int> & prices, int capacity ) {
   int N = masses.size();
